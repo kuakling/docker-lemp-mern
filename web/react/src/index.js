@@ -3,11 +3,11 @@ const express = require('express')
 
 const app = express()
 
-let isBuilt = false
+let isBuild = false
 
 const done = () => {
   return !isBuild && app.listen(3000, () => {
-    isBuilt = true
+    isBuild = true
     console.log('Listening @ http://localhost:3000')
   })
 }
