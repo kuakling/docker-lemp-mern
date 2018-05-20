@@ -2,6 +2,7 @@ const resolvePath = path => require('path').resolve(__dirname, path)
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const base = require('./base')
+const StatsWebpackPlugin = require('stats-webpack-plugin')
 
 const clientConfig = merge( base, {
   name: 'client',
@@ -17,6 +18,9 @@ const clientConfig = merge( base, {
     path: resolvePath('../dist/client'),
     publicPath: '/',
   },
+  plugins: [
+    new StatsWebpackPlugin('stats.json'),
+  ]
 })
 
 module.exports = clientConfig
