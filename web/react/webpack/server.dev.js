@@ -29,6 +29,9 @@ const serverConfig = {
         }
       }
     ]
+  },
+  node: {
+    fs: 'empty'
   }
 }
 

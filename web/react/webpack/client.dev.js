@@ -28,6 +28,9 @@ const clientConfig = {
         }
       }
     ]
+  },
+  node: {
+    fs: 'empty'
   }
 }
 
