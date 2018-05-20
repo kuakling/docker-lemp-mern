@@ -1,4 +1,5 @@
 const resolvePath = path => require('path').resolve(__dirname, path)
+const webpack = require('webpack')
 
 const clientConfig = {
   name: 'client',
@@ -6,6 +7,8 @@ const clientConfig = {
   target: 'web',
   devtool: 'eval',
   entry: [
+    'webpack-hot-middleware/client?reload=true',
+    'react-hot-loader/patch',
     resolvePath('../src/client/index.js')
   ],
   output: {
@@ -29,6 +32,9 @@ const clientConfig = {
       }
     ]
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   node: {
     fs: 'empty'
   }
