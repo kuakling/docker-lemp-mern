@@ -5,23 +5,18 @@ const base = require('./base')
 
 const clientConfig = merge( base, {
   name: 'client',
-  mode: 'development',
+  mode: 'production',
   target: 'web',
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: [
-    'webpack-hot-middleware/client?reload=true',
-    'react-hot-loader/patch',
     resolvePath('../src/client/index.js')
   ],
   output: {
     filename: 'mainClient.js',
     chunkFilename: 'mainClient.js',
-    path: resolvePath('../dist-dev/client'),
+    path: resolvePath('../dist/client'),
     publicPath: '/',
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ]
 })
 
 module.exports = clientConfig

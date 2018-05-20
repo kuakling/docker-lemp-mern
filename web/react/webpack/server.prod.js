@@ -4,9 +4,9 @@ const base = require('./base')
 
 const serverConfig = merge( base, {
   name: 'server',
-  mode: 'development',
+  mode: 'production',
   target: 'web',
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: [
     resolvePath('../src/server/index.js')
   ],
@@ -14,7 +14,7 @@ const serverConfig = merge( base, {
     libraryTarget: 'commonjs2',
     filename: 'mainServer.js',
     chunkFilename: 'mainServer.js',
-    path: resolvePath('../dist-dev/server'),
+    path: resolvePath('../dist/server'),
     publicPath: '/',
   },
 })
