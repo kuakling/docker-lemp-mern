@@ -2,6 +2,7 @@ const resolvePath = path => require('path').resolve(__dirname, path)
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const base = require('./base')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const clientConfig = merge( base, {
   name: 'client',
@@ -19,8 +20,30 @@ const clientConfig = merge( base, {
     path: resolvePath('../dist-dev/client'),
     publicPath: '/',
   },
+  module: {
+    rules: [
+      {
+        test: /\.styl$/,
+        exclude: [/node_modules/],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              module: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]'
+            }
+          },
+          'stylus-loader'
+        ]
+      }
+    ],
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
+    })
   ]
 })
 
