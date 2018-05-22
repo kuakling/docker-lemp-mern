@@ -1,8 +1,8 @@
 const resolvePath = path => require('path').resolve(__dirname, path)
 const merge = require('webpack-merge')
-const base = require('./base')
+const common = require('./server.common')
 
-const serverConfig = merge( base, {
+const serverConfig = merge(common, {
   name: 'server',
   mode: 'production',
   target: 'web',

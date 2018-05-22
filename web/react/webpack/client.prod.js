@@ -1,10 +1,10 @@
 const resolvePath = path => require('path').resolve(__dirname, path)
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const base = require('./base')
+const common = require('./client.common.js')
 const StatsWebpackPlugin = require('stats-webpack-plugin')
 
-const clientConfig = merge( base, {
+const clientConfig = merge( common, {
   name: 'client',
   mode: 'production',
   target: 'web',
